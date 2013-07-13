@@ -6,7 +6,8 @@ class TogglableTableHeaderView < UITableViewHeaderFooterView
 
     if index = detect_touch_section(point)
       self.tableView.delegate.toggle_section index
-      self.tableView.reloadData
+      # TODO: withRowAnimation options
+      self.tableView.reloadSections NSIndexSet.indexSetWithIndex(index), withRowAnimation: UITableViewRowAnimationNone
     end
   end
 
