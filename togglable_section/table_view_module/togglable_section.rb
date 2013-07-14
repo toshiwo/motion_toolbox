@@ -9,9 +9,7 @@ module TableViewModule
 
     module InstanceMethods
       def tableView table_view, numberOfRowsInSection:section
-        @section_statuses ||= build_section_statuses
-
-        if @section_statuses[section] == true
+        if section_statuses[section] == true
           tableViewOrigin table_view, numberOfRowsInSection:section
         else
           0
@@ -20,9 +18,7 @@ module TableViewModule
     end
 
     def toggle_section index
-      @section_statuses ||= build_section_statuses
-
-      @section_statuses[index] = !!!@section_statuses[index]
+      section_statuses[index] = !!!section_statuses[index]
     end
 
     def tableView table_view, viewForHeaderInSection:section
@@ -41,10 +37,13 @@ module TableViewModule
     end
 
     def tableView table_view, heightForRowAtIndexPath:index_path
-      @section_statuses ||= build_section_statuses
-
-      @section_statuses[index_path.section] == true ? 43.0 : 0.0
+      section_statuses[index_path.section] == true ? 43.0 : 0.0
     end
+
+    def section_statuses
+      @section_statuses ||= build_section_statuses
+    end
+    private :section_statuses
 
     def build_section_statuses
       self.table_data.map do |section|
