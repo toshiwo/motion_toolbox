@@ -1,6 +1,24 @@
 module TableViewModule
   module TogglableSection
 
+    def self.included base
+      base.send :alias_method, :'tableViewOrigin:numberOfRowsInSection', :'tableView:numberOfRowsInSection'
+
+      base.send :include, InstanceMethods
+    end
+
+    module InstanceMethods
+      def tableView table_view, numberOfRowsInSection:section
+        @section_statuses ||= build_section_statuses
+
+        if @section_statuses[section] == true
+          tableViewOrigin table_view, numberOfRowsInSection:section
+        else
+          0
+        end
+      end
+    end
+
     def toggle_section index
       @section_statuses ||= build_section_statuses
 
