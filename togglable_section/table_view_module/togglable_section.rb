@@ -36,10 +36,6 @@ module TableViewModule
       return view
     end
 
-    def tableView table_view, heightForRowAtIndexPath:index_path
-      section_statuses[index_path.section] == true ? 43.0 : 0.0
-    end
-
     def section_statuses
       @section_statuses ||= build_section_statuses
     end
