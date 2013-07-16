@@ -17,6 +17,20 @@ module TableViewModule
       end
     end
 
+    # dependency ProMotion's method
+    def update_table_data
+      clear_section_statuses
+
+      super
+    end
+
+    # dependency ProMotion's method
+    def update_table_view_data
+      clear_section_statuses
+
+      super
+    end
+
     def toggle_section index
       section_statuses[index] = !!!section_statuses[index]
     end
@@ -48,6 +62,11 @@ module TableViewModule
       end
     end
     private :build_section_statuses
+
+    def clear_section_statuses
+      @section_statuses = nil
+    end
+    private :clear_section_statuses
 
   end
 end
