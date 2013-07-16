@@ -57,6 +57,7 @@ module TableViewModule
 
     def build_section_statuses
       self.table_data.map do |section|
+        # dependency ProMotion::TableScreen's table data structure
         # TODO: current vertion default: false (hidden)
         section[:title].nil? ? nil : false
       end
