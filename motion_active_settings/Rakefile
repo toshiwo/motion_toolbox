@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+$:.unshift("/Library/RubyMotion/lib")
+require 'motion/project/template/ios'
+require './lib/motion_active_settings'
+
+Motion::Project::App.setup do |app|
+  # Use `rake config' to see complete project settings.
+  app.name = 'motion_active_settings'
+end
+puts 'in motion_active_settings'

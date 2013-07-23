@@ -1,0 +1,11 @@
+unless defined?(Motion::Project::Config)
+  raise "This file must be required within a RubyMotion project Rakefile."
+end
+
+lib_dir_path = File.dirname(File.expand_path(__FILE__))
+Motion::Project::App.setup do |app|
+  app.files.unshift(Dir.glob(File.join(lib_dir_path, "project/**/*.rb")))
+end
+
+require 'motion_active_settings/configure'
+require 'motion_active_settings/extentions/motion/project/xcode_config'
